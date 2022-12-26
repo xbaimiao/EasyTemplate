@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
-    id 'org.jetbrains.kotlin.jvm' version '1.7.22'
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
 }
 
 group 'com.xbaimiao.template'
@@ -9,22 +9,11 @@ version '1.0.0'
 
 repositories {
     mavenLocal()
-    maven {
-        name "papermc"
-        url "https://papermc.io/repo/repository/maven-public/"
-    }
-    maven {
-        url "https://repo.xbaimiao.com/nexus/content/repositories/releases/"
-    }
-    maven {
-        url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
-    }
-    maven {
-        url "https://repo.aikar.co/content/groups/aikar/"
-    }
-    maven {
-        url "https://repo.codemc.org/repository/maven-public/"
-    }
+    maven { url("https://papermc.io/repo/repository/maven-public/") }
+    maven { url "https://repo.xbaimiao.com/nexus/content/repositories/releases/" }
+    maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
+    maven { url "https://repo.aikar.co/content/groups/aikar/" }
+    maven { url "https://repo.codemc.org/repository/maven-public/" }
     mavenCentral()
 }
 
@@ -33,12 +22,11 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation "com.github.cryptomorin:XSeries:9.1.0"
-    implementation "top.mcplugin.lib:module-main:1.0.4-beta33"
-    implementation 'com.xbaimiao:EasyLib:1.4'
-//    implementation "top.mcplugin.lib:module-lang:1.0.4-beta33"
-//    implementation "top.mcplugin.lib:module-nacos:1.0.4-beta33"
-//    implementation "top.mcplugin.lib:module-command:1.0.4-beta33"
+    implementation 'com.xbaimiao:EasyLib:1.5.1'
+    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+    compileOnly fileTree('libs')
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+//    implementation "com.github.cryptomorin:XSeries:9.1.0"
 //    item-nbt
 //    implementation "de.tr7zw:item-nbt-api:2.10.0"
 //    implementation "de.tr7zw:item-nbt-api:2.11.0-20221110.225012-31"
@@ -46,29 +34,24 @@ dependencies {
 //    implementation 'com.j256.ormlite:ormlite-core:6.1'
 //    implementation 'com.j256.ormlite:ormlite-jdbc:6.1'
 //    implementation 'com.zaxxer:HikariCP:4.0.3'
-//    implementation "top.mcplugin.lib:module-ormlite:1.0.4-beta33"
 //    implementation "io.papermc:paperlib:1.0.7"
-    compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
-    compileOnly fileTree('libs')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 shadowJar {
-    def file = file('src\\main\\resources\\plugin.yml')
-    def text = file.text
-    text = text.replace('{ group }', '' + project.group + '.' + project.name)
-    text = text.replace('{ name }', '' + project.name)
-    file.write text
-    relocate('top.mcplugin.lib', project.group.toString() + ".mcplugin.lib")
+//    def file = file('src\\main\\resources\\plugin.yml')
+//    def text = file.text
+//    text = text.replace('{ group }', '' + project.group + '.' + project.name)
+//    text = text.replace('{ name }', '' + project.name)
+//    file.write text
     relocate('com.cryptomorin.xseries', project.group.toString() + ".shadow.xseries")
     relocate('io.papermc.lib', project.group.toString() + ".shadow.paperlib")
     relocate('com.zaxxer.hikari', project.group.toString() + ".shadow.hikari")
     relocate('de.tr7zw.changeme.nbtapi', project.group.toString() + ".shadow.nbtapi")
     relocate('com.j256.ormlite', project.group.toString() + ".shadow.ormlite")
-    relocate('com.xbaimiao.easylib', project.group.toString() + ".shadow.easylib")
-    relocate('kotlin', project.group.toString() + ".shadow.kotlin")
-    relocate('org.intellij', project.group.toString() + ".shadow.intellij")
-    relocate('org.jetbrains', project.group.toString() + ".shadow.jetbrains")
+    relocate('com.xbaimiao.easylib', project.group.toString() + ".easylib")
+//    relocate('kotlin', project.group.toString() + ".shadow.kotlin")
+//    relocate('org.intellij', project.group.toString() + ".shadow.intellij")
+//    relocate('org.jetbrains', project.group.toString() + ".shadow.jetbrains")
     dependencies {
         exclude(dependency("org.slf4j:"))
     }
@@ -78,6 +61,8 @@ shadowJar {
 
 processResources {
     def props = [version: version]
+    props.put("main", project.group + '.' + project.name)
+    props.put("name", project.name)
     inputs.properties props
     filteringCharset 'UTF-8'
     filesMatching('plugin.yml') {
@@ -88,11 +73,13 @@ processResources {
 test {
     useJUnitPlatform()
 }
+
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
     }
 }
+
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
