@@ -22,7 +22,7 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'com.xbaimiao:EasyLib:1.5.1'
+    implementation 'com.xbaimiao:EasyLib:1.5.3'
     compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
     compileOnly fileTree('libs')
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
@@ -38,20 +38,12 @@ dependencies {
 }
 
 shadowJar {
-//    def file = file('src\\main\\resources\\plugin.yml')
-//    def text = file.text
-//    text = text.replace('{ group }', '' + project.group + '.' + project.name)
-//    text = text.replace('{ name }', '' + project.name)
-//    file.write text
     relocate('com.cryptomorin.xseries', project.group.toString() + ".shadow.xseries")
     relocate('io.papermc.lib', project.group.toString() + ".shadow.paperlib")
     relocate('com.zaxxer.hikari', project.group.toString() + ".shadow.hikari")
     relocate('de.tr7zw.changeme.nbtapi', project.group.toString() + ".shadow.nbtapi")
     relocate('com.j256.ormlite', project.group.toString() + ".shadow.ormlite")
     relocate('com.xbaimiao.easylib', project.group.toString() + ".easylib")
-//    relocate('kotlin', project.group.toString() + ".shadow.kotlin")
-//    relocate('org.intellij', project.group.toString() + ".shadow.intellij")
-//    relocate('org.jetbrains', project.group.toString() + ".shadow.jetbrains")
     dependencies {
         exclude(dependency("org.slf4j:"))
     }

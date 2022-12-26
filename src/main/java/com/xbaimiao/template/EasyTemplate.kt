@@ -6,7 +6,7 @@ import com.xbaimiao.easylib.EasyPlugin
 class EasyTemplate : EasyPlugin() {
 
     override fun enable() {
-        println("HELLO")
+
     }
 
 }

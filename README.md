@@ -1,2 +1,1 @@
-# XKLib-Template
-快速创建坤坤项目
+快速创建一个带有EasyLib 的 Minecraft项目
