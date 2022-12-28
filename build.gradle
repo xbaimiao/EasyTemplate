@@ -22,14 +22,13 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'com.xbaimiao:EasyLib:1.5.3'
+    implementation 'com.xbaimiao:EasyLib:1.5.6'
     compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
     compileOnly fileTree('libs')
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 //    implementation "com.github.cryptomorin:XSeries:9.1.0"
 //    item-nbt
-//    implementation "de.tr7zw:item-nbt-api:2.10.0"
-//    implementation "de.tr7zw:item-nbt-api:2.11.0-20221110.225012-31"
+//    implementation "de.tr7zw:item-nbt-api:2.11.1"
 //    ormlite
 //    implementation 'com.j256.ormlite:ormlite-core:6.1'
 //    implementation 'com.j256.ormlite:ormlite-jdbc:6.1'
@@ -44,8 +43,11 @@ shadowJar {
     relocate('de.tr7zw.changeme.nbtapi', project.group.toString() + ".shadow.nbtapi")
     relocate('com.j256.ormlite', project.group.toString() + ".shadow.ormlite")
     relocate('com.xbaimiao.easylib', project.group.toString() + ".easylib")
+    relocate('kotlin', project.group.toString() + ".kotlin")
+    relocate('de.tr7zw', project.group.toString() + ".shadow.nbt")
     dependencies {
         exclude(dependency("org.slf4j:"))
+        exclude(dependency("com.google.code.gson:gson:"))
     }
     exclude("LICENSE")
     exclude("META-INF/*.SF")
