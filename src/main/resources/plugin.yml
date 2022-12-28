@@ -3,5 +3,3 @@ main: ${main}
 version: '${version}'
 author: xbaimiao
 api-version: 1.13
-depend:
-  - KotlinPlugin
