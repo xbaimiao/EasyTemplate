@@ -23,9 +23,9 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     implementation 'com.xbaimiao:EasyLib:1.5.6'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
     compileOnly fileTree('libs')
-    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 //    implementation "com.github.cryptomorin:XSeries:9.1.0"
 //    item-nbt
 //    implementation "de.tr7zw:item-nbt-api:2.11.1"
