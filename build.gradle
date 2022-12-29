@@ -17,6 +17,11 @@ repositories {
     mavenCentral()
 }
 
+artifacts {
+    archives(shadowJar)
+    archives(kotlinSourcesJar)
+}
+
 tasks.withType(JavaCompile) {
     options.setEncoding("UTF-8")
 }
