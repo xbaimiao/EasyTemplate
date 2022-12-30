@@ -41,6 +41,12 @@ dependencies {
 //    implementation "io.papermc:paperlib:1.0.7"
 }
 
+tasks {
+    assemble {
+        dependsOn clean
+    }
+}
+
 shadowJar {
     relocate('com.cryptomorin.xseries', project.group.toString() + ".shadow.xseries")
     relocate('io.papermc.lib', project.group.toString() + ".shadow.paperlib")
