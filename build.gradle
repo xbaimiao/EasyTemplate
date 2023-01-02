@@ -14,6 +14,16 @@ repositories {
     maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
     maven { url "https://repo.aikar.co/content/groups/aikar/" }
     maven { url "https://repo.codemc.org/repository/maven-public/" }
+    maven {
+        name = 'minecraft-repo'
+        url = 'https://libraries.minecraft.net/'
+        // this lets gradle know where to look for authlib
+    }
+    maven{
+        name = "taboolib"
+        url = "http://ptms.ink:8081/repository/releases/"
+        allowInsecureProtocol = true
+    }
     mavenCentral()
 }
 
@@ -27,10 +37,12 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    implementation 'com.xbaimiao:EasyLib:1.5.7'
+    implementation 'com.xbaimiao:EasyLib:1.6.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compileOnly 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
     compileOnly fileTree('libs')
+//    compileOnly 'com.mojang:authlib:1.5.21'
+//    compileOnly "ink.ptms:nms-all:1.0.0"
 //    implementation "com.github.cryptomorin:XSeries:9.1.0"
 //    item-nbt
 //    implementation "de.tr7zw:item-nbt-api:2.11.1"
