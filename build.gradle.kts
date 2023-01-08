@@ -70,7 +70,6 @@ tasks {
         dependsOn(clean)
     }
     processResources {
-        include("plugin.yml")
         val props = ArrayList<Pair<String, Any>>()
         props.add("version" to version)
         props.add("main" to "${project.group}.${project.name}")
