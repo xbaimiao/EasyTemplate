@@ -64,6 +64,7 @@ tasks {
         }
         exclude("LICENSE")
         exclude("META-INF/*.SF")
+        minimize()
     }
     assemble {
         dependsOn(clean)
