@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("com.github.johnrengelman.shadow") version ("7.1.2")
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.8.0"
 }
 
 group = "com.xbaimiao.template"
@@ -20,6 +20,24 @@ repositories {
         isAllowInsecureProtocol = true
     }
     mavenCentral()
+}
+
+dependencies {
+    implementation("com.xbaimiao:EasyLib:1.6.1")
+    implementation(kotlin("stdlib-jdk8"))
+//    implementation ("net.kyori:adventure-api:4.9.3")
+//    implementation ("net.kyori:adventure-platform-bukkit:4.2.0")
+//    implementation ("net.kyori:adventure-text-minimessage:4.12.0")
+//    implementation ("com.github.cryptomorin:XSeries:9.1.0")
+//    implementation ("de.tr7zw:item-nbt-api:2.11.1")
+//    implementation ("com.j256.ormlite:ormlite-core:6.1")
+//    implementation ("com.j256.ormlite:ormlite-jdbc:6.1")
+//    implementation ("com.zaxxer:HikariCP:4.0.3")
+//    implementation ("io.papermc:paperlib:1.0.7")
+    compileOnly(fileTree("libs"))
+    compileOnly("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
+//    compileOnly ("com.mojang:authlib:1.5.21")
+//    compileOnly ("ink.ptms:nms-all:1.0.0")
 }
 
 tasks {
@@ -64,22 +82,4 @@ tasks {
         archives(shadowJar)
         archives(kotlinSourcesJar)
     }
-}
-
-dependencies {
-    implementation("com.xbaimiao:EasyLib:1.6.1")
-    implementation(kotlin("stdlib-jdk8"))
-//    implementation ("net.kyori:adventure-api:4.9.3")
-//    implementation ("net.kyori:adventure-platform-bukkit:4.2.0")
-//    implementation ("net.kyori:adventure-text-minimessage:4.12.0")
-//    implementation ("com.github.cryptomorin:XSeries:9.1.0")
-//    implementation ("de.tr7zw:item-nbt-api:2.11.1")
-//    implementation ("com.j256.ormlite:ormlite-core:6.1")
-//    implementation ("com.j256.ormlite:ormlite-jdbc:6.1")
-//    implementation ("com.zaxxer:HikariCP:4.0.3")
-//    implementation ("io.papermc:paperlib:1.0.7")
-    compileOnly(fileTree("libs"))
-    compileOnly("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
-//    compileOnly ("com.mojang:authlib:1.5.21")
-//    compileOnly ("ink.ptms:nms-all:1.0.0")
 }
