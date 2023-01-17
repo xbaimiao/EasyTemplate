@@ -35,7 +35,7 @@ dependencies {
 //    implementation ("com.zaxxer:HikariCP:4.0.3")
 //    implementation ("io.papermc:paperlib:1.0.7")
     compileOnly(fileTree("libs"))
-    compileOnly("org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
 //    compileOnly ("com.mojang:authlib:1.5.21")
 //    compileOnly ("ink.ptms:nms-all:1.0.0")
 }
