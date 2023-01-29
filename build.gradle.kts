@@ -6,8 +6,8 @@ plugins {
     id("com.github.johnrengelman.shadow") version ("7.1.2")
     kotlin("jvm") version "1.8.0"
     id("org.jetbrains.kotlin.plugin.lombok") version "1.8.0"
-    id("io.papermc.paperweight.userdev") version "1.3.8"
-    id("xyz.jpenilla.run-paper") version "1.0.6"
+    id("io.papermc.paperweight.userdev") version "1.4.1"
+    id("xyz.jpenilla.run-paper") version "2.0.0"
 }
 
 group = "com.xbaimiao.template"
