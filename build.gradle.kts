@@ -1,7 +1,13 @@
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+
 plugins {
-    id("java")
+    java
     id("com.github.johnrengelman.shadow") version ("7.1.2")
     kotlin("jvm") version "1.8.0"
+    id("org.jetbrains.kotlin.plugin.lombok") version "1.8.0"
+    id("io.papermc.paperweight.userdev") version "1.3.8"
+    id("xyz.jpenilla.run-paper") version "1.0.6"
 }
 
 group = "com.xbaimiao.template"
@@ -23,6 +29,7 @@ repositories {
 }
 
 dependencies {
+    paperDevBundle("1.18.2-R0.1-SNAPSHOT")
     implementation("com.xbaimiao:EasyLib:1.6.7")
     implementation(kotlin("stdlib-jdk8"))
 //    implementation ("net.kyori:adventure-api:4.9.3")
@@ -35,10 +42,12 @@ dependencies {
 //    implementation ("com.zaxxer:HikariCP:4.0.3")
 //    implementation ("io.papermc:paperlib:1.0.7")
     compileOnly(fileTree("libs"))
-    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
+//    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
 //    compileOnly ("com.mojang:authlib:1.5.21")
 //    compileOnly ("ink.ptms:nms-all:1.0.0")
 }
+
+fun releaseTime() = LocalDate.now().format(DateTimeFormatter.ofPattern("y.M.d"))
 
 tasks {
     compileJava {
@@ -68,6 +77,10 @@ tasks {
     }
     assemble {
         dependsOn(clean)
+        dependsOn(reobfJar)
+    }
+    reobfJar {
+        outputJar.set(file("${project.buildDir}/libs/${project.name}-${releaseTime()}-${project.version}-dist.jar"))
     }
     processResources {
         val props = ArrayList<Pair<String, Any>>()
