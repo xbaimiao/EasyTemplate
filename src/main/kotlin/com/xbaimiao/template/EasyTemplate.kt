@@ -1,29 +1,19 @@
 package com.xbaimiao.template
 
 import com.xbaimiao.easylib.EasyPlugin
-import com.xbaimiao.easylib.module.command.command
-import org.bukkit.block.Block
-import org.bukkit.entity.Player
+import com.xbaimiao.easylib.module.utils.Module
 
 @Suppress("unused")
 class EasyTemplate : EasyPlugin() {
 
+    private val modules = ArrayList<Module<EasyTemplate>>()
 
     override fun enable() {
-        command("cnm") {
-            exec {
-                sender.sendMessage(player!!.getTargetBlock().type.name)
-            }
-        }.register()
-
-    }
-
-    private fun Player.getTargetBlock(): Block {
-        return this.getTargetBlock(null, 100)
+        modules.forEach { it.enable(this) }
     }
 
     override fun disable() {
-
+        modules.forEach { it.disable(this) }
     }
 
 }
