@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
     paperDevBundle("1.18.2-R0.1-SNAPSHOT")
-    implementation("com.xbaimiao:EasyLib:1.6.7")
+    implementation("com.xbaimiao:EasyLib:1.6.8")
     implementation(kotlin("stdlib-jdk8"))
 //    implementation ("net.kyori:adventure-api:4.9.3")
 //    implementation ("net.kyori:adventure-platform-bukkit:4.2.0")
