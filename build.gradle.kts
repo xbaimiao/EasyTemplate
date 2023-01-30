@@ -6,8 +6,6 @@ plugins {
     id("com.github.johnrengelman.shadow") version ("7.1.2")
     kotlin("jvm") version "1.8.0"
     id("org.jetbrains.kotlin.plugin.lombok") version "1.8.0"
-    id("io.papermc.paperweight.userdev") version "1.4.1"
-    id("xyz.jpenilla.run-paper") version "2.0.0"
 }
 
 group = "com.xbaimiao.template"
@@ -29,7 +27,6 @@ repositories {
 }
 
 dependencies {
-    paperDevBundle("1.18.2-R0.1-SNAPSHOT")
     implementation("com.xbaimiao:EasyLib:1.6.8")
     implementation(kotlin("stdlib-jdk8"))
 //    implementation ("net.kyori:adventure-api:4.9.3")
@@ -42,7 +39,7 @@ dependencies {
 //    implementation ("com.zaxxer:HikariCP:4.0.3")
 //    implementation ("io.papermc:paperlib:1.0.7")
     compileOnly(fileTree("libs"))
-//    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
 //    compileOnly ("com.mojang:authlib:1.5.21")
 //    compileOnly ("ink.ptms:nms-all:1.0.0")
 }
@@ -59,14 +56,11 @@ tasks {
         }
     }
     shadowJar {
-        relocate("com.cryptomorin.xseries", project.group.toString() + ".shadow.xseries")
-        relocate("io.papermc.lib", project.group.toString() + ".shadow.paperlib")
-        relocate("com.zaxxer.hikari", project.group.toString() + ".shadow.hikari")
-        relocate("de.tr7zw.changeme.nbtapi", project.group.toString() + ".shadow.nbtapi")
-        relocate("com.j256.ormlite", project.group.toString() + ".shadow.ormlite")
-        relocate("com.xbaimiao.easylib", project.group.toString() + ".easylib")
-        relocate("kotlin", project.group.toString() + ".kotlin")
-        relocate("de.tr7zw", project.group.toString() + ".shadow.nbt")
+        val relocateFile = File("relocate.properties")
+        relocateFile.readText().split("\n").forEach {
+            val args = it.split("=")
+            relocate(args[0], "${project.group}.shadow.${args[1]}")
+        }
         dependencies {
             exclude(dependency("org.slf4j:"))
             exclude(dependency("com.google.code.gson:gson:"))
@@ -74,13 +68,10 @@ tasks {
         exclude("LICENSE")
         exclude("META-INF/*.SF")
         minimize()
+        archiveBaseName.set("${project.name}-${releaseTime()}")
     }
     assemble {
         dependsOn(clean)
-        dependsOn(reobfJar)
-    }
-    reobfJar {
-        outputJar.set(file("${project.buildDir}/libs/${project.name}-${releaseTime()}-${project.version}-dist.jar"))
     }
     processResources {
         val props = ArrayList<Pair<String, Any>>()
