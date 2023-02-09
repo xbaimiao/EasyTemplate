@@ -39,7 +39,7 @@ dependencies {
 //    implementation ("com.zaxxer:HikariCP:4.0.3")
 //    implementation ("io.papermc:paperlib:1.0.7")
     compileOnly(fileTree("libs"))
-    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly("ink.ptms.core:v11903:11903:universal")
 //    compileOnly ("com.mojang:authlib:1.5.21")
 //    compileOnly ("ink.ptms:nms-all:1.0.0")
 }
