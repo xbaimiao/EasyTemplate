@@ -1,6 +1,6 @@
 <config>
     <input>
-        <jar in="{input}" out="obf-{out}"/>
+        <jar in="{input}" out="{out}"/>
     </input>
 
     <keep-names>

@@ -65,9 +65,8 @@ tasks.register("confuse") {
             config.createNewFile()
         }
         config.writeText(
-            bakConfig.readText()
-                .replace("{input}", "../" + jarFile.path)
-                .replace("{out}", jarName)
+            bakConfig.readText().replace("{input}", "../" + jarFile.path)
+                .replace("{out}", "../" + jarFile.path.replace(".jar", "-confuse.jar"))
                 .replace("{main}", "${project.group}.${project.name}")
         )
         // 执行控制台命令
