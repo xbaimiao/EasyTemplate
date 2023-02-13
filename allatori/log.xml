@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   http://lqs1848.gitee.io v7.6 DEMO
+   Web: https://blog.lqs1848.top
+
+   Log created: Mon Feb 13 08:09:33 CST 2023
+-->
+
+<!--
+Class 'org.bukkit.plugin.java.JavaPlugin' cannot be found.
+Class 'org.bukkit.inventory.InventoryHolder' cannot be found.
+Class 'org.bukkit.event.Listener' cannot be found.
+Some classes weren't found. It may result in weaker obfuscation. Add needed jars to the 'classpath' element of the configuration file.
+-->
+
+<allatori>
+ <mapping>
+  <sources>
+  </sources>
+  <lines>
+  </lines>
+ </mapping>
+</allatori>

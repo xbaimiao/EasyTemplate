@@ -1,0 +1,18 @@
+<config>
+    <input>
+        <jar in="../build/libs/EasyTemplate-2023.2.13-1.0.0-all.jar" out="obf-EasyTemplate-2023.2.13-1.0.0-all.jar"/>
+    </input>
+
+    <keep-names>
+        <class access="protected+">
+            <field access="protected+"/>
+            <method access="protected+"/>
+        </class>
+    </keep-names>
+    <ignore-classes>
+        <class template="class *shadow*" />
+        <class template="class com.xbaimiao.template.EasyTemplate"/>
+    </ignore-classes>
+
+    <property name="log-file" value="log.xml"/>
+</config>

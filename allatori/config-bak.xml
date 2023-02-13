@@ -1,0 +1,18 @@
+<config>
+    <input>
+        <jar in="{input}" out="obf-{out}"/>
+    </input>
+
+    <keep-names>
+        <class access="protected+">
+            <field access="protected+"/>
+            <method access="protected+"/>
+        </class>
+    </keep-names>
+    <ignore-classes>
+        <class template="class *shadow*" />
+        <class template="class {main}"/>
+    </ignore-classes>
+
+    <property name="log-file" value="log.xml"/>
+</config>

@@ -46,6 +46,38 @@ dependencies {
 
 fun releaseTime() = LocalDate.now().format(DateTimeFormatter.ofPattern("y.M.d"))
 
+// 混淆
+tasks.register("confuse") {
+    dependsOn("build")
+    doLast {
+        val jarName = "${project.name}-${releaseTime()}-${project.version}-all.jar"
+        val jarFile = File("build/libs/$jarName")
+        val allatoriCrackFile = File("allatori/allatori_crack.jar")
+        if (!allatoriCrackFile.exists()) {
+            throw RuntimeException("allatori_crack.jar not found")
+        }
+        if (!jarFile.exists()) {
+            throw RuntimeException("$jarName not found")
+        }
+        val bakConfig = File("allatori/config-bak.xml")
+        val config = File("allatori/config.xml")
+        if (!config.exists()) {
+            config.createNewFile()
+        }
+        config.writeText(
+            bakConfig.readText()
+                .replace("{input}", "../" + jarFile.path)
+                .replace("{out}", jarName)
+                .replace("{main}", "${project.group}.${project.name}")
+        )
+        // 执行控制台命令
+        exec {
+            // 指定命令
+            commandLine("java", "-jar", "allatori/allatori_crack.jar", "allatori/config.xml")
+        }
+    }
+}
+
 tasks {
     compileJava {
         options.encoding = "UTF-8"
