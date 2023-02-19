@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.xbaimiao:EasyLib:1.7.3")
+    implementation("com.xbaimiao:EasyLib:1.7.4")
     implementation(kotlin("stdlib-jdk8"))
 //    implementation ("net.kyori:adventure-api:4.9.3")
 //    implementation ("net.kyori:adventure-platform-bukkit:4.2.0")
