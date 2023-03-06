@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.xbaimiao:EasyLib:1.7.5")
+    implementation("com.xbaimiao:EasyLib:1.7.6")
     implementation(kotlin("stdlib-jdk8"))
 //    implementation ("net.kyori:adventure-api:4.9.3")
 //    implementation ("net.kyori:adventure-platform-bukkit:4.2.0")
@@ -39,7 +39,8 @@ dependencies {
 //    implementation ("com.zaxxer:HikariCP:4.0.3")
 //    implementation ("io.papermc:paperlib:1.0.7")
     compileOnly(fileTree("libs"))
-    compileOnly("ink.ptms.core:v11903:11903:universal")
+    compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+//    compileOnly("ink.ptms.core:v11903:11903:universal")
 //    compileOnly ("com.mojang:authlib:1.5.21")
 //    compileOnly ("ink.ptms:nms-all:1.0.0")
 }
