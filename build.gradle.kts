@@ -49,6 +49,7 @@ fun releaseTime() = LocalDate.now().format(DateTimeFormatter.ofPattern("y.M.d"))
 
 // 混淆
 tasks.register("confuse") {
+    this.group = "build"
     dependsOn("build")
     doLast {
         val jarName = "${project.name}-${releaseTime()}-${project.version}-all.jar"
