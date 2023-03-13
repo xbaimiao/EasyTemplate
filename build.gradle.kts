@@ -14,7 +14,7 @@ version = "1.0.0"
 repositories {
     mavenLocal()
     maven("https://papermc.io/repo/repository/maven-public/")
-    maven("https://repo.xbaimiao.com/nexus/content/repositories/releases/")
+    maven("https://maven.xbaimiao.com/repository/releases/")
     maven("https://repo.aikar.co/content/groups/aikar/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven("https://repo.codemc.org/repository/maven-public/")
@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.xbaimiao:EasyLib:1.7.6")
+    implementation("com.xbaimiao:EasyLib:1.7.7")
     implementation(kotlin("stdlib-jdk8"))
 //    implementation ("net.kyori:adventure-api:4.9.3")
 //    implementation ("net.kyori:adventure-platform-bukkit:4.2.0")
