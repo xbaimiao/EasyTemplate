@@ -1,0 +1,7 @@
+main: com.xbaimiao.template.EasyTemplate
+name: EasyTemplate
+version: 1.0.0
+authors:
+  - xbaimiao
+api-version: "1.13"
+folia-supported: true
