@@ -10,10 +10,10 @@ version = "1.0.0"
 repositories {
     mavenCentral()
     maven {
-//        credentials {
-//            username = project.findProperty("githubUsername").toString()
-//            password = project.findProperty("githubPassword").toString()
-//        }
+        credentials {
+            username = project.findProperty("githubUsername").toString()
+            password = project.findProperty("githubPassword").toString()
+        }
         name = "GithubPackages"
         url = uri("https://maven.pkg.github.com/xbaimiao/EasyLib")
     }
