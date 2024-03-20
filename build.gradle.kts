@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.xbaimiao:easy-lib:3.5.5")
+    implementation("com.xbaimiao:easy-lib:3.5.8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
 //    implementation("de.tr7zw:item-nbt-api:2.12.2")
