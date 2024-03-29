@@ -1,8 +1,9 @@
-main: com.xbaimiao.template.EasyTemplate
-name: EasyTemplate
-version: 1.0.0
+main: # inject
+name: # inject
+version: ${version}
 authors:
   - xbaimiao
 api-version: "1.13"
 folia-supported: true
-update-info: '更新信息'
+update-info: # inject
+relocate: # inject
