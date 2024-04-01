@@ -12,6 +12,7 @@ val pluginName = "EasyTemplate"
 val pluginUpdateInfo = "更新消息"
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         credentials {
@@ -27,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.xbaimiao:easy-lib:3.6.8")
+    implementation("com.xbaimiao:easy-lib:3.7.0")
 
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     compileOnly(kotlin("stdlib-jdk8"))

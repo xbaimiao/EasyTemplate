@@ -7,7 +7,7 @@ import com.xbaimiao.easylib.util.ShortUUID
 class EasyTemplate : EasyPlugin() {
 
     override fun enable() {
-        logger.info("插件启动成功 $ShortUUID.randomShortUUID()")
+        logger.info("插件启动成功 ${ShortUUID.randomShortUUID()}")
     }
 
     override fun cloudKotlin(): Boolean {
