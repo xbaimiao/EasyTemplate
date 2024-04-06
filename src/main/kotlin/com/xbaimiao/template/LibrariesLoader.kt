@@ -11,7 +11,7 @@ import com.xbaimiao.easylib.util.DependencyList
             format = true
         ),
         Dependency(
-            "de.tr7zw:item-nbt-api:2.12.2",
+            "de.tr7zw:item-nbt-api:2.12.3",
             "de.tr7zw.changeme.nbtapi.NBTItem",
             format = true,
             repoUrl = "https://repo.codemc.org/repository/maven-public/"

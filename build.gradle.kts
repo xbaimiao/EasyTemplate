@@ -28,11 +28,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.xbaimiao:easy-lib:3.7.3")
+    implementation("com.xbaimiao:easy-lib:3.7.4")
 
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     compileOnly(kotlin("stdlib-jdk8"))
-    compileOnly("de.tr7zw:item-nbt-api:2.12.2")
+    compileOnly("de.tr7zw:item-nbt-api:2.12.3")
 
 //    compileOnly("com.zaxxer:HikariCP:4.0.3")
 //    compileOnly("redis.clients:jedis:5.0.1")
