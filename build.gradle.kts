@@ -28,7 +28,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.xbaimiao:easy-lib:3.7.0")
+    implementation("com.xbaimiao:easy-lib:3.7.3")
 
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     compileOnly(kotlin("stdlib-jdk8"))
