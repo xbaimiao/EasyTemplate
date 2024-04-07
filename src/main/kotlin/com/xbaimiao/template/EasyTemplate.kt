@@ -10,8 +10,4 @@ class EasyTemplate : EasyPlugin() {
         logger.info("插件启动成功 ${ShortUUID.randomShortUUID()}")
     }
 
-    override fun cloudKotlin(): Boolean {
-        return true
-    }
-
 }
