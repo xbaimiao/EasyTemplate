@@ -24,8 +24,18 @@ open class EasyLibExtension {
         action.execute(env)
     }
 
+    fun library(id: String, cloud: Boolean, action: Action<Library>) {
+        val library = Library(id, cloud)
+        action.execute(library)
+        this.library += library
+    }
+
+    fun relocate(pattern: String, replacement: String, cloud: Boolean) {
+        relocate += Relocate(pattern, replacement, cloud)
+    }
+
     fun getAllRelocate(): Array<Relocate> {
-        val libraryRelocate = library.map { it.relocates }.toTypedArray().flatten().toMutableSet()
+        val libraryRelocate = library.map { it.relocates }.flatten().toMutableSet()
         libraryRelocate.addAll(relocate)
         return libraryRelocate.toTypedArray()
     }

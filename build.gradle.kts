@@ -1,6 +1,3 @@
-import com.xbaimiao.easylib.Library
-import com.xbaimiao.easylib.Relocate
-
 plugins {
     java
     id("com.github.johnrengelman.shadow") version ("8.1.1")
@@ -12,50 +9,35 @@ group = "com.xbaimiao.template"
 version = "1.0.0"
 
 easylib {
-    version = "3.7.5"
-
-    library = arrayOf(
-        // 可选
-        Library(
-            "com.github.cryptomorin:XSeries:9.9.0",
-            true,
-            relocates = arrayOf(Relocate("com.cryptomorin.xseries", "${project.group}.shadow.xseries"))
-        ),
-//        Library(
-//            "de.tr7zw:item-nbt-api:2.12.3", true,
-//            relocates = arrayOf(Relocate("de.tr7zw.changeme.nbtapi", "${project.group}.shadow.itemnbtapi")),
-//            repo = "https://repo.codemc.org/repository/maven-public/"
-//        ),
-//        Library(
-//            "redis.clients:jedis:5.0.1",
-//            true,
-//            relocates = arrayOf(Relocate("redis.clients.jedis", "${project.group}.shadow.redis"))
-//        ),
-//        // jedis需要
-//        Library(
-//            "org.apache.commons:commons-pool2:2.12.0",
-//            true,
-//            relocates = arrayOf(Relocate("org.apache.commons.pool2", "${project.group}.shadow.pool2"))
-//        ),
-//        Library(
-//            "com.zaxxer:HikariCP:4.0.3", true,
-//            relocates = arrayOf(Relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari"))
-//        ),
-    )
-
-    relocate = arrayOf(
-        // 必须
-        Relocate("com.xbaimiao.easylib", "${project.group}.easylib", false),
-        Relocate("kotlin", "${project.group}.shadow.kotlin", true),
-        Relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
-    )
-
     env {
         mainClassName = "com.xbaimiao.template.EasyTemplate"
         pluginName = "EasyTemplate"
         pluginUpdateInfo = "更新消息"
         kotlinVersion = "1.9.20"
     }
+    version = "3.7.5"
+
+    library("com.github.cryptomorin:XSeries:9.9.0", true) {
+        relocate("com.cryptomorin.xseries", "${project.group}.shadow.xseries")
+    }
+//    library("de.tr7zw:item-nbt-api:2.12.3", true){
+//        relocate("de.tr7zw.changeme.nbtapi", "${project.group}.shadow.itemnbtapi")
+//        repo("https://repo.codemc.org/repository/maven-public/")
+//    }
+//    library("redis.clients:jedis:5.0.1", true) {
+//        relocate("redis.clients.jedis", "${project.group}.shadow.redis")
+//    }
+//    // jedis需要
+//    library("org.apache.commons:commons-pool2:2.12.0", true){
+//        relocate("org.apache.commons.pool2", "${project.group}.shadow.pool2")
+//    }
+//    library("com.zaxxer:HikariCP:4.0.3", true) {
+//        relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari")
+//    }
+
+    relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
+    relocate("kotlin", "${project.group}.shadow.kotlin", true)
+    relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
 }
 
 repositories {
@@ -66,7 +48,6 @@ repositories {
 
     maven("https://papermc.io/repo/repository/maven-public/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    maven("https://repo.tabooproject.org/repository/releases/")
 }
 
 dependencies {
@@ -114,8 +95,7 @@ tasks {
         filter { line ->
             var replace = line
             if (line.contains(relocateAnchor)) {
-                replace = line.replace(
-                    relocateAnchor,
+                replace = line.replace(relocateAnchor,
                     "relocate: \r\n" + easylib.getAllRelocate().filter { it.cloud }
                         .joinToString("\r\n") { "  - \"${it.pattern}!${it.replacement}\"" })
             }
@@ -132,7 +112,7 @@ tasks {
                 replace = "kotlin-version: \"${easylib.env.kotlinVersion}\""
             }
             if (line.contains("depend-list: # inject")) {
-                replace = "depend-list: \r\n" + easylib.library.joinToString("\r\n") {
+                replace = "depend-list: \r\n" + easylib.library.filter { it.cloud }.joinToString("\r\n") {
                     if (it.repo == null) {
                         "  - \"${it.id}\""
                     } else {
