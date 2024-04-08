@@ -24,9 +24,9 @@ open class EasyLibExtension {
         action.execute(env)
     }
 
-    fun library(id: String, cloud: Boolean, action: Action<Library>) {
+    fun library(id: String, cloud: Boolean, action: Action<Library>? = null) {
         val library = Library(id, cloud)
-        action.execute(library)
+        action?.execute(library)
         this.library += library
     }
 
