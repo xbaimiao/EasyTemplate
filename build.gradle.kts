@@ -46,6 +46,7 @@ repositories {
     // auto-inject
     easylib.library.mapNotNull { it.repo }.toSet().forEach { uri -> maven(uri) }
 
+    maven("https://maven.xbaimiao.com/repository/maven-public/")
     maven("https://papermc.io/repo/repository/maven-public/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
 }
