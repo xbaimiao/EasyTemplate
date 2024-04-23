@@ -1,7 +1,7 @@
 plugins {
     java
     id("com.github.johnrengelman.shadow") version ("8.1.1")
-    id("com.xbaimiao.easylib") version ("1.1.2")
+    id("com.xbaimiao.easylib") version ("1.1.6")
     kotlin("jvm") version "1.9.20"
 }
 
