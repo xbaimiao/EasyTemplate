@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.js.naming.encodeSignature
+
 plugins {
     java
     id("com.github.johnrengelman.shadow") version ("8.1.1")
@@ -93,6 +95,7 @@ tasks {
     processResources {
         expand("version" to project.version)
         val relocateAnchor = "relocate: # inject"
+        filteringCharset = "UTF-8"
         filter { line ->
             var replace = line
             if (line.contains(relocateAnchor)) {
