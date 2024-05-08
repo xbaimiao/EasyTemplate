@@ -17,7 +17,7 @@ easylib {
         pluginUpdateInfo = "更新消息"
         kotlinVersion = "1.9.20"
     }
-    version = "3.7.7"
+    version = "3.8.0"
 
     library("com.github.cryptomorin:XSeries:9.9.0", true) {
         relocate("com.cryptomorin.xseries", "${project.group}.shadow.xseries")
