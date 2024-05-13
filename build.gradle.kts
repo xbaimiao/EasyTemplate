@@ -1,10 +1,11 @@
-import org.jetbrains.kotlin.js.naming.encodeSignature
+val ktVersion: String by project
+val easylibVersion: String by project
 
 plugins {
     java
-    id("com.github.johnrengelman.shadow") version ("8.1.1")
-    id("com.xbaimiao.easylib") version ("1.1.6")
-    kotlin("jvm") version "1.9.20"
+    id("com.github.johnrengelman.shadow")
+    id("com.xbaimiao.easylib")
+    kotlin("jvm")
 }
 
 group = "com.xbaimiao.template"
@@ -14,10 +15,9 @@ easylib {
     env {
         mainClassName = "com.xbaimiao.template.EasyTemplate"
         pluginName = "EasyTemplate"
-        pluginUpdateInfo = "更新消息"
-        kotlinVersion = "1.9.20"
+        kotlinVersion = ktVersion
     }
-    version = "3.8.0"
+    version = easylibVersion
 
     library("com.github.cryptomorin:XSeries:9.9.0", true) {
         relocate("com.cryptomorin.xseries", "${project.group}.shadow.xseries")
@@ -37,6 +37,11 @@ easylib {
 //        relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari")
 //    }
 
+//    val cloudOrmlite = true
+//    library("com.j256.ormlite:ormlite-core:6.1", cloudOrmlite)
+//    library("com.j256.ormlite:ormlite-jdbc:6.1", cloudOrmlite)
+//    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", cloudOrmlite)
+
     relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
     relocate("kotlin", "${project.group}.shadow.kotlin", true)
     relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
@@ -45,23 +50,12 @@ easylib {
 repositories {
     mavenLocal()
     mavenCentral()
-    // auto-inject
-    easylib.library.mapNotNull { it.repo }.toSet().forEach { uri -> maven(uri) }
-
     maven("https://maven.xbaimiao.com/repository/maven-public/")
     maven("https://papermc.io/repo/repository/maven-public/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
 }
 
 dependencies {
-    easylib.library.forEach {
-        if (it.cloud) {
-            compileOnly(it.id)
-        } else {
-            implementation(it.id)
-        }
-    }
-
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     compileOnly(kotlin("stdlib-jdk8"))
 //    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
@@ -91,41 +85,6 @@ tasks {
             relocate(it.pattern, it.replacement)
         }
         minimize()
-    }
-    processResources {
-        expand("version" to project.version)
-        val relocateAnchor = "relocate: # inject"
-        filteringCharset = "UTF-8"
-        filter { line ->
-            var replace = line
-            if (line.contains(relocateAnchor)) {
-                replace = line.replace(relocateAnchor,
-                    "relocate: \r\n" + easylib.getAllRelocate().filter { it.cloud }
-                        .joinToString("\r\n") { "  - \"${it.pattern}!${it.replacement}\"" })
-            }
-            if (line.contains("main: # inject")) {
-                replace = "main: ${easylib.env.mainClassName}"
-            }
-            if (line.contains("name: # inject")) {
-                replace = "name: ${easylib.env.pluginName}"
-            }
-            if (line.contains("update-info: # inject")) {
-                replace = "update-info: \"${easylib.env.pluginUpdateInfo}\""
-            }
-            if (line.contains("kotlin-version: # inject")) {
-                replace = "kotlin-version: \"${easylib.env.kotlinVersion}\""
-            }
-            if (line.contains("depend-list: # inject")) {
-                replace = "depend-list: \r\n" + easylib.library.filter { it.cloud }.joinToString("\r\n") {
-                    if (it.repo == null) {
-                        "  - \"${it.id}\""
-                    } else {
-                        "  - \"${it.id}<<repo>>${it.repo}\""
-                    }
-                }
-            }
-            replace
-        }
     }
 
 }
