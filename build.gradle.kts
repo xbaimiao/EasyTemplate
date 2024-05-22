@@ -48,7 +48,6 @@ easylib {
 repositories {
     mavenLocal()
     mavenCentral()
-    maven("https://maven.xbaimiao.com/repository/maven-public/")
     maven("https://papermc.io/repo/repository/maven-public/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
 }
