@@ -19,9 +19,6 @@ easylib {
     }
     version = easylibVersion
 
-    library("com.github.cryptomorin:XSeries:9.9.0", true) {
-        relocate("com.cryptomorin.xseries", "${project.group}.shadow.xseries")
-    }
 //    library("de.tr7zw:item-nbt-api:2.12.3", true){
 //        relocate("de.tr7zw.changeme.nbtapi", "${project.group}.shadow.itemnbtapi")
 //        repo("https://repo.codemc.org/repository/maven-public/")
@@ -43,6 +40,7 @@ easylib {
 //    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", cloudOrmlite)
 
     relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
+    relocate("com.cryptomorin.xseries", "${project.group}.shadow.xseries", true)
     relocate("kotlin", "${project.group}.shadow.kotlin", true)
     relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
 }
@@ -57,6 +55,7 @@ repositories {
 
 dependencies {
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    compileOnly("com.github.cryptomorin:XSeries:10.0.0")
     compileOnly(kotlin("stdlib-jdk8"))
 //    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
