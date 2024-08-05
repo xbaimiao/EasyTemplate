@@ -62,6 +62,9 @@ dependencies {
 }
 
 tasks {
+    assemble {
+        dependsOn(shadowJar)
+    }
     compileJava {
         options.encoding = "UTF-8"
     }
