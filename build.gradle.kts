@@ -65,6 +65,9 @@ tasks {
     compileJava {
         options.encoding = "UTF-8"
     }
+    processResources {
+        outputs.upToDateWhen { false }
+    }
     shadowJar {
         dependencies {
             easylib.library.forEach {
