@@ -37,7 +37,6 @@ easylib {
 //    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", cloudOrmlite)
 
     relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
-    relocate("com.cryptomorin.xseries", "${project.group}.shadow.xseries", true)
     relocate("kotlin", "${project.group}.shadow.kotlin", true)
     relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
 }
