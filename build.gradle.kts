@@ -8,6 +8,10 @@ plugins {
     kotlin("jvm")
 }
 
+group = "com.xbaimiao.template"
+
+version = "1.0.0"
+
 easylib {
     env {
         mainClassName = "com.xbaimiao.template.EasyTemplate"
