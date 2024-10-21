@@ -20,7 +20,7 @@ easylib {
     }
     version = easylibVersion
 
-//    library("de.tr7zw:item-nbt-api:2.12.3", true){
+//    library("de.tr7zw:item-nbt-api:2.13.2", false){
 //        relocate("de.tr7zw.changeme.nbtapi", "${project.group}.shadow.itemnbtapi")
 //        repo("https://repo.codemc.org/repository/maven-public/")
 //    }
