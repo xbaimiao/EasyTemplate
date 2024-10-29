@@ -54,7 +54,6 @@ repositories {
 
 dependencies {
     compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
-    compileOnly("com.github.cryptomorin:XSeries:10.0.0")
     compileOnly(kotlin("stdlib-jdk8"))
 //    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
