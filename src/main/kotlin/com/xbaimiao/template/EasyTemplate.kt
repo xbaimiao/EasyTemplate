@@ -1,15 +1,24 @@
 package com.xbaimiao.template
 
 import com.xbaimiao.easylib.EasyPlugin
-import com.xbaimiao.easylib.util.ShortUUID
-import com.xbaimiao.easylib.util.info
+import org.bukkit.Bukkit
+import org.bukkit.Location
+import org.bukkit.Material
+import org.bukkit.block.data.Lightable
 
 @Suppress("unused")
 class EasyTemplate : EasyPlugin() {
 
     override fun enable() {
-        info("测试")
-        logger.info("${description.name} 插件启动成功 ${ShortUUID.randomShortUUID()}")
+        val location = Location(Bukkit.getWorld("world"), 129.0, 65.0, -270.0)
+        location.block.type = Material.REDSTONE_LAMP
+
+        val block = location.block
+
+        val lightable = block.blockData as Lightable
+        lightable.isLit = false
+        block.setBlockData(lightable, true)
+
     }
 
 }
