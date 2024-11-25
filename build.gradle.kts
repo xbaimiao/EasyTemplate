@@ -32,17 +32,17 @@ easylib {
 //        relocate("org.apache.commons.pool2", "${project.group}.shadow.pool2")
 //    }
 
-    val cloudOrmlite = true
-    library("com.j256.ormlite:ormlite-core:6.1", cloudOrmlite)
-    library("com.j256.ormlite:ormlite-jdbc:6.1", cloudOrmlite)
-    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", cloudOrmlite)
-    library("com.zaxxer:HikariCP:4.0.3", true) {
-        relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari")
-    }
+//    val cloudOrmlite = true
+//    library("com.j256.ormlite:ormlite-core:6.1", cloudOrmlite)
+//    library("com.j256.ormlite:ormlite-jdbc:6.1", cloudOrmlite)
+//    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", cloudOrmlite)
+//    library("com.zaxxer:HikariCP:4.0.3", true) {
+//        relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari")
+//    }
 
     relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
-    relocate("kotlin", "${project.group}.shadow.kotlin", true)
-    relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
+//    relocate("kotlin", "${project.group}.shadow.kotlin", true)
+//    relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
 }
 
 repositories {
