@@ -3,13 +3,12 @@ val easylibVersion: String by project
 
 plugins {
     java
-    id("com.github.johnrengelman.shadow")
+    id("io.github.goooler.shadow")
     id("com.xbaimiao.easylib")
     kotlin("jvm")
 }
 
 group = "com.xbaimiao.template"
-
 version = "1.0.0"
 
 easylib {
@@ -19,30 +18,7 @@ easylib {
         kotlinVersion = ktVersion
     }
     version = easylibVersion
-
-//    library("de.tr7zw:item-nbt-api:2.13.2", false){
-//        relocate("de.tr7zw.changeme.nbtapi", "${project.group}.shadow.itemnbtapi")
-//        repo("https://repo.codemc.org/repository/maven-public/")
-//    }
-//    library("redis.clients:jedis:5.0.1", true) {
-//        relocate("redis.clients.jedis", "${project.group}.shadow.redis")
-//    }
-//    // jedis需要
-//    library("org.apache.commons:commons-pool2:2.12.0", true){
-//        relocate("org.apache.commons.pool2", "${project.group}.shadow.pool2")
-//    }
-
-//    val cloudOrmlite = true
-//    library("com.j256.ormlite:ormlite-core:6.1", cloudOrmlite)
-//    library("com.j256.ormlite:ormlite-jdbc:6.1", cloudOrmlite)
-//    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", cloudOrmlite)
-//    library("com.zaxxer:HikariCP:4.0.3", true) {
-//        relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari")
-//    }
-
     relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
-//    relocate("kotlin", "${project.group}.shadow.kotlin", true)
-//    relocate("kotlinx", "${project.group}.shadow.kotlinx", true)
 }
 
 repositories {
@@ -84,7 +60,7 @@ tasks {
             exclude(dependency("org.jetbrains.kotlinx:"))
         }
         archiveClassifier.set("")
-        easylib.getAllRelocate().forEach {
+        easylib.relocate.forEach {
             relocate(it.pattern, it.replacement)
         }
         minimize()

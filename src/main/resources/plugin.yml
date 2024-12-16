@@ -5,7 +5,6 @@ authors:
   - xbaimiao
 api-version: "1.13"
 folia-supported: true
-update-info: # inject
 depend-list: # inject
 relocate: # inject
 kotlin-version: # inject
