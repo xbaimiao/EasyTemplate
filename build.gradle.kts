@@ -36,6 +36,14 @@ dependencies {
     compileOnly(fileTree("libs"))
 }
 
+//kotlin {
+//    sourceSets.all {
+//        languageSettings {
+//            languageVersion = "2.0"
+//        }
+//    }
+//}
+
 tasks {
     assemble {
         dependsOn(shadowJar)
