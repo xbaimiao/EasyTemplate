@@ -18,6 +18,11 @@ easylib {
         kotlinVersion = ktVersion
     }
     version = easylibVersion
+//    library("com.zaxxer:HikariCP:4.0.3", true)
+//    library("com.j256.ormlite:ormlite-core:6.1", true)
+//    library("com.j256.ormlite:ormlite-jdbc:6.1", true)
+//    relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari", true)
+//    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", true)
     relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
 }
 
