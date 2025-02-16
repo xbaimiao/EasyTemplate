@@ -24,6 +24,8 @@ easylib {
 //    relocate("com.zaxxer.hikari", "${project.group}.shadow.hikari", true)
 //    relocate("com.j256.ormlite", "${project.group}.shadow.ormlite", true)
     relocate("com.xbaimiao.easylib", "${project.group}.easylib", false)
+    relocate("kotlin", "${project.group}.shadow.kotlin", false)
+    relocate("kotlinx", "${project.group}.shadow.kotlinx", false)
 }
 
 repositories {
